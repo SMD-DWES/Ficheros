@@ -50,23 +50,62 @@ if(isset($_POST["enviar"])) {
     }
 }
 
-//Si envió o no envió un archivo mostrará igualmente todos los archivos que hay en el servidor
-//Abre un directorio...
-$dir_handler = opendir("../recursosPublicos/");
+function listado() {
 
-//Lee de la ruta especificada todos los archivos y los muestra.
-while(($listado = readdir($dir_handler)) !== false) { //Si hay un fallo parará el bucle.
-    if($listado != "." && $listado!= "..") {
+    //Comprobamos que exista el GET de imagenes
+    if(isset($_GET["imagenes"])) {
 
-        //blacklist de archivos a mostrar
-        if($listado == "imagenGRANDE.jpg") continue;
+        //Si envió o no envió un archivo mostrará igualmente todos los archivos que hay en el servidor
+        //Abre un directorio...
+        $dir_handler = opendir("../recursosPublicos/");
+
+        //Lee de la ruta especificada todos los archivos y los muestra.
+        while(($listado = readdir($dir_handler)) !== false) { //Si hay un fallo parará el bucle.
+            if($listado != "." && $listado!= "..") {
+
+                //blacklist de archivos a mostrar
+                //Esta es una imagen grande a subir al servidor, para comprobar que
+                //no dejara subir la misma por el peso.
+                if($listado == "imagenGRANDE.jpg") continue;
 
 
-        echo "Nombre de la imagen: ". $listado . "<br>";
-        echo "<img src='../recursosPublicos/$listado'> ";
-        echo "<br><br><br>";
+                echo "Nombre de la imagen: ". $listado . "<br>";
+
+                //Si hemos hecho click en mostrar imagenes, las mostramos...
+                if($_GET["imagenes"] == "si")
+                    echo "
+                    <a href='../recursosPublicos/$listado' target='_blank'>
+                        <img src='../recursosPublicos/$listado'>
+                    </a>";
+                    
+                echo "<br><br><br>";
+            }
+        }
+        //Al terminar cierra el directorio
+        closedir($dir_handler);
     }
 }
+?>
 
-//Al terminar cierra el directorio
-closedir($dir_handler);
+<!DOCTYPE html>
+    <!-- Sergio Matamoros Delgado -->
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ficheros</title>
+        <link rel="stylesheet" href="../css/estilo.css">
+    </head>
+    <body>
+        <nav>
+            <button><a href="procesadoFicheros.php?imagenes=si">Mostrar la galería de imágenes</a></button>
+            <button><a href="procesadoFicheros.php?imagenes=no">Mostrar nombres de las imágenes</a></button>
+            <button><a href="../formularioSubida.html">Subir archivos</a></button>
+        </nav>
+
+        <main>
+            <?php  listado(); ?>
+        </main>
+    </body>
+</html>

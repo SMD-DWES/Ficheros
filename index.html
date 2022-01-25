@@ -5,14 +5,14 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Ficheros</title>
         <link rel="stylesheet" href="css/estilo.css">
     </head>
     <body>
-        <button><a href="procesos/procesadoFicheros.php">Mostrar la galería de imágenes</a></button>
-        <form action="procesos/procesadoFicheros.php" enctype="multipart/form-data" method="post">
-            <input type="file" name="fichero">
-            <input type="submit" value="Enviar" name="enviar[]">
-        </form>
+        <nav>
+            <button><a href="procesos/procesadoFicheros.php?imagenes=si">Mostrar la galería de imágenes</a></button>
+            <button><a href="procesos/procesadoFicheros.php?imagenes=no">Mostrar archivos PDF</a></button>
+            <button><a href="formularioSubida.html">Subir archivos</a></button>
+        </nav>
     </body>
 </html>

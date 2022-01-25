@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+    <!-- Sergio Matamoros Delgado -->
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ficheros</title>
+        <link rel="stylesheet" href="css/estilo.css">
+    </head>
+    <body>
+        <nav>
+            <button><a href="procesos/procesadoFicheros.php?imagenes=si">Mostrar la galería de imágenes</a></button>
+            <button><a href="procesos/procesadoFicheros.php?imagenes=no">Mostrar nombres de las imágenes</a></button>
+            <button><a href="index.html">Subir archivos</a></button>
+        </nav>
+
+        <main>
+            <form action="procesos/procesadoFicheros.php" enctype="multipart/form-data" method="post">
+                <label for="fichero">Subir archivo al servidor</label>
+                <input type="file" name="fichero">
+                <input type="submit" value="Subir archivos" name="enviar[]">
+            </form>
+        </main>
+    </body>
+</html>

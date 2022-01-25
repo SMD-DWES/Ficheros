@@ -1,12 +1,73 @@
 /**
     Sergio Matamoros Delgado
 */
+body {
+    background: rgb(145,48,125);
+    background: linear-gradient(90deg, rgba(145,48,125,1) 1%, rgba(150,20,64,1) 66%);
+}
+
+nav {
+    background-color: rgb(37, 201, 165);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    height: 100px;
+}
+
+main {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    margin-top: 50px;
+
+    background-color: cyan;
+    width: 30%;
+    opacity: 0.7;
+}
+
+/** Imagenes */
+main img {
+    width: 200px;
+    height: 200px;
+    margin-left: 20px;
+}
+
+
+
 button >  a:link,  a:visited {
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
-button, input[type=submit], input[type=file] {
+button, input[type=submit] {
+    height: 50px;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    /*margin: 30px auto auto 30px;*/
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+
+
+
+    cursor: pointer;
+}
+
+button:hover, input[type=submit]:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+label, input[type=file] {
     display: block;
-    margin-bottom: 30px;
+    margin: 30px 30px;
 }
