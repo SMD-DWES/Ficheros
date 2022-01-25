@@ -79,6 +79,12 @@ button >  a:link,  a:visited {
     text-decoration: none;
 }
 
+form{
+    width: 100%;
+}
+
+input[type=submit]{width: 100%;}
+
 button, input[type=submit] {
     height: 50px;
     background-color: #4CAF50; /* Green */
