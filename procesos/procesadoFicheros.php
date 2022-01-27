@@ -38,11 +38,20 @@ if(isset($_POST["enviar"])) {
 
         //Si no hay ningún error, podemos subir el archivo...
         if($fichero["error"] == UPLOAD_ERR_OK && $extensionCorrecta) {
+            //Comprobación de que el archivo debe pesar menos de 5MB
+            if($fichero["size"] < 5 * 1024 * 1024) {
 
-            if($fichero["size"] < 6 * 1024 * 1024) {
+                $textSource = strtolower($fichero["name"]);
+
+                /*//Sanitiza el texto por ASCII directamente...
+                for($i=0;$i<strlen($textSource);$i++) {
+                    if(!ord($textSource) < 97 || !ord($textSource) > 122) {
+                        strtr();
+                    }
+                }*/
 
                 //Ruta donde se va a guardar el archivo subido por el usuario.
-                $uploaded_file = __DIR__ . "/../recursosPublicos/" . $fichero["name"];
+                $uploaded_file = __DIR__ . "/../recursosPublicos/" . trim($fichero["name"]);
 
                 //Movemos el archivo...
                 move_uploaded_file($fichero["tmp_name"], $uploaded_file);
